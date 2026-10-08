@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SIMS Login</title>
+</head>
+
+<body>
+
+    <h1>Student Information Management System For Manggahan Highschool </h1>
+
+    <p>
+        Manage student records, track academic progress,
+        and keep everything organized.
+    </p>
+
+    <hr>
+
+    <h2>LOGIN</h2>
+
+    <p>Please enter your credentials to continue.</p>
+
+    <form id="loginForm">
+
+        Username:
+        <input type="text" id="username" placeholder="Username">
+
+        <br><br>
+
+       Password:
+        <input type="password" id="password" placeholder="Password">
+
+        <br><br>
+
+        <button type="submit">LOGIN</button>
+
+    </form>
+
+    <p id="message"></p>
+
+    <a href="#" id="forgotPassword">Forgot password?</a>
+
+
+   
+     
+    <script>
+
+       
+        let users = [
+            {
+                "username": "Ferdie",
+                "password": "12345"
+            },
+            {
+                "username": "Niruu",
+                "password": "12345"
+            }
+        ];
+
+
+        const loginForm = document.getElementById("loginForm");
+
+        loginForm.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+           
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+
+         
+            let foundUser = users.find(function(user) {
+
+                return user.username === username &&
+                       user.password === password;
+
+            });
+
+
+           
+            if (foundUser) {
+
+                document.getElementById("message").innerHTML =
+                    "Login successful!";
+
+               
+                window.location.href = "dashboard.html";
+
+            } else {
+
+                document.getElementById("message").innerHTML =
+                    "Incorrect username or password.";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
