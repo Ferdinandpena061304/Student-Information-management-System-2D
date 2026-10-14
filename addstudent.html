@@ -1,0 +1,369 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student</title>
+
+    <style>
+        body {
+            margin: 1;
+            font-family: Arial, Helvetica, sans-serif, sans-serif;
+            background: black;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+            margin: 0;
+            background: white;
+        }
+
+        .sidebar {
+            width: 230px;
+            background: #080653;
+            color: white;
+        }
+
+        .logo {
+            text-align: center;     
+            padding: 35px 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 15px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .sidebar a:hover,
+        .active {
+            background: #303c8b;
+        }
+
+        .main {
+            flex: 1;
+        }
+
+        .header {
+            background: #ecebfa;
+            padding: 20px;
+            text-align: right;
+        }
+
+        .logout {
+            border: none;
+            background: transparent;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 27px;
+            margin-top: 0;
+        }
+
+        
+        label {
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 15px 10px 8px;
+        }
+
+        input, select {
+            width: 100%;
+            height: 50px;
+            padding: 10px 15px;
+            font-size: 17px;
+            border: 1px solid gray;
+            border-radius: 7px;
+            background: white;
+        }
+
+        input, select {
+            box-sizing: border-box;
+        }
+
+        .row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .field {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .buttons {
+            margin: 30px 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .cancel {
+            background: white;
+            border: 1px solid #aaa;
+        }
+
+        .save {
+            background: #0645ff;
+            color: white;
+            border: none;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                width: 100%;
+                margin: 0;
+            }
+
+            .sidebar {
+                width: 150px;
+            }
+
+            .logo {
+                font-size: 15px;
+            }
+
+            .sidebar a {
+                font-size: 14px;
+                padding: 12px 8px;
+            }
+
+            .content {
+                padding: 12px;
+            }
+
+            .row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+   
+    <div class="sidebar">
+
+        <div class="logo">
+            Student Information<br>
+            Management System
+        </div>
+
+     
+        <a href="Studentlist.html">⌂ Student list</a>
+
+      
+        <a href="addstudent.html" class="active">
+            ＋ Add student
+        </a>
+
+      
+        <a href="Studentprofile.html">♟ Student profile</a>
+
+    </div>
+
+    <div class="main">
+
+        <div class="header">
+            <button class="logout" onclick="logout()">
+                Logout
+            </button>
+        </div>
+
+        <div class="content">
+
+            <h1>ADD STUDENT</h1>
+
+            <form id="studentForm">
+
+            
+                <label>Full name</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter full name"
+                    required
+                >
+
+                <div class="row">
+
+                    <div class="field">
+
+                        <label>Grade</label>
+
+                        <select id="grade" required>
+                            <option value="">Select Grade</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+
+                    </div>
+
+                    <div class="field">
+
+                        <label>Section</label>
+
+                        <select id="section" required>
+                            <option value="">Select Section</option>
+                            <option value="Taurine">Taurine</option>
+                            <option value="Cebu">Cebu</option>
+                            <option value="Silang">Silang</option>
+                            <option value="Luna">Luna</option>
+                            <option value="Glycine">Glycine</option>
+                            <option value="Bohol">Bohol</option>
+                            <option value="Tulip">Tulip</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <label>Contact no.</label>
+
+                <input
+                    type="tel"
+                    id="contact"
+                    placeholder="09XXXXXXXXX"
+                    pattern="09[0-9]{9}"
+                    maxlength="11"
+                    title="Enter an 11-digit number starting with 09"
+                    required>
+
+               
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="example@gmail.com"
+                    required >
+
+                <div class="buttons">
+
+                    <button
+                        type="button"
+                        class="cancel"
+                        onclick="cancelForm()">
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="save">
+                        Save
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+
+document.getElementById("studentForm").onsubmit = function(event) {
+
+    
+    event.preventDefault();
+
+   
+    var name = document.getElementById("name").value;
+    var grade = document.getElementById("grade").value;
+    var section = document.getElementById("section").value;
+    var contact = document.getElementById("contact").value;
+    var email = document.getElementById("email").value;
+
+    
+    var students = JSON.parse(localStorage.getItem("students"));
+
+    if (students == null) {
+        students = [];
+    }
+
+  
+    var id = 131;
+
+    students.forEach(function(student) {
+        if (student.id >= id) {
+            id = student.id + 1;
+        }
+    });
+
+   
+    var newStudent = {
+        id: id,
+        name: name,
+        grade: Number(grade),
+        section: section,
+        contact: contact,
+        email: email
+    };
+
+   
+    students.push(newStudent);
+
+   
+    localStorage.setItem("students", JSON.stringify(students));
+
+    alert("Student added successfully!");
+
+   
+    document.getElementById("studentForm").reset();
+};
+
+
+
+function cancelForm() {
+
+    
+    window.location.href = "Studentlist.html";
+
+}
+
+
+
+function logout() {
+
+    var answer = confirm("Do you want to log out?");
+
+    if (answer == true) {
+        alert("Logged out!");
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+```
