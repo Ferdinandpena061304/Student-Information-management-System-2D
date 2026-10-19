@@ -177,12 +177,14 @@
             let username = document.getElementById("username").value;
             let password = document.getElementById("password").value;
 
-            let foundUser = users.find(function(user) {
+           loginForm.addEventListener("submit", function(event) {
+               event.preventDefault();
 
-                return user.username === username &&
-                       user.password === password;
+               document.getElementById("message").style.color = "green";
+               document.getElementById("message").innerHTML = "Login successful!";
 
-            });
+                     window.location.href = "Studentlist.html";
+});
 
             if (foundUser) {
 
